@@ -1,13 +1,13 @@
-package com.qa;
+package com.qa.EmailAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FeedbackFormsMailApplication {
+public class EmailAPIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FeedbackFormsMailApplication.class, args);
+		SpringApplication.run(EmailAPIApplication.class, args);
 	}
 
 }
