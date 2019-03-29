@@ -11,7 +11,7 @@
 	<groupId>com.qa</groupId>
 	<artifactId>feedback-forms-mail</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>feedback-forms-mail</name>
+	<name>Mail</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
