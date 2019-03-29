@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.qa.EmailAPI.persistence.domain.Email;
+import com.qa.EmailAPI.persistence.domain.MassMail;
 import com.qa.EmailAPI.service.EmailService;
 
 @CrossOrigin
@@ -18,8 +18,13 @@ public class EmailRest {
 	private EmailService src;
 	
 	@PostMapping("/send")
-	public void sendSimpleMessage(@RequestBody Email email) {
-		src.sendSimpleMessage(email.getTo(), email.getSubject(), email.getText());
+	public void sendSingleMessage(@RequestBody Email email) {
+		src.sendSingleMessage(email.getTo(), email.getSubject(), email.getText());
+	}
+	
+	@PostMapping("/massSend")
+	public void sendMultipleMessages(@RequestBody MassMail email) {
+		src.sendMultipleMessages(email.getTo(), email.getSubject(), email.getText());
 	}
 
 }

@@ -1,16 +1,9 @@
 package com.qa.EmailAPI.service;
 
-import java.io.File;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +12,7 @@ public class EmailServiceImpl implements EmailService {
 	@Autowired
     public JavaMailSender emailSender;
 
-    public void sendSimpleMessage(String to, String subject, String text) {
+    public void sendSingleMessage(String to, String subject, String text) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(to);
@@ -31,30 +24,22 @@ public class EmailServiceImpl implements EmailService {
             exception.printStackTrace();
         }
     }
-
-    @Override
-    public void sendSimpleMessageUsingTemplate(String to, String subject, SimpleMailMessage template, String ...templateArgs) {
-        String text = String.format(template.getText(), templateArgs);  
-        sendSimpleMessage(to, subject, text);
-    }
-
-    @Override
-    public void sendMessageWithAttachment(String to, String subject, String text, String pathToAttachment) {
-        try {
-            MimeMessage message = emailSender.createMimeMessage();
-            // pass 'true' to the constructor to create a multipart message
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-            helper.setTo(to);
-            helper.setSubject(subject);
-            helper.setText(text);
-
-            FileSystemResource file = new FileSystemResource(new File(pathToAttachment));
-            helper.addAttachment("Invoice", file);
-
-            emailSender.send(message);
-        } catch (MessagingException e) {
-            e.printStackTrace();
+    
+    public void sendMultipleMessages(String[] to, String subject, String text) {
+    	try {
+    		SimpleMailMessage[] messages = new SimpleMailMessage[to.length];
+    		for (int i=0; i<to.length; i++) {
+    			SimpleMailMessage m = new SimpleMailMessage();
+    			m.setTo(to[i]);
+    			m.setSubject(subject);
+    			m.setText(text);
+    			messages[i] = m;
+    		}
+    		for (SimpleMailMessage message:messages) {
+    			emailSender.send(message);
+    		}
+        } catch (MailException exception) {
+            exception.printStackTrace();
         }
     }
 
