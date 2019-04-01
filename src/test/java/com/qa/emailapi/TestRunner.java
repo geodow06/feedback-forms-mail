@@ -1,4 +1,4 @@
-package com.qa.EmailAPI;
+package com.qa.emailapi;
 
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;

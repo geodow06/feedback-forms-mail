@@ -1,4 +1,4 @@
-package com.qa.EmailAPI.service;
+package com.qa.emailapi.service;
 
 public interface EmailService {
 	

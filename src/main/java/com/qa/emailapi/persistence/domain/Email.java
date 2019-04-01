@@ -1,24 +1,24 @@
-package com.qa.EmailAPI.persistence.domain;
+package com.qa.emailapi.persistence.domain;
 
-public class MassMail {
-	private String[] to;
+public class Email {
+	private String to;
 	private String subject;
 	private String text;
 	
-	public MassMail() {
+	public Email() {
 		
 	}
 	
-	public MassMail(String[] to, String subject, String text) {
+	public Email(String to, String subject, String text) {
 		this.to = to;
 		this.subject = subject;
 		this.text = text;
 	}
 	
-	public String[] getTo() {
+	public String getTo() {
 		return to;
 	}
-	public void setTo(String[] to) {
+	public void setTo(String to) {
 		this.to = to;
 	}
 	public String getSubject() {

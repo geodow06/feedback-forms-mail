@@ -1,4 +1,4 @@
-package com.qa.EmailAPI.rest;
+package com.qa.emailapi.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.EmailAPI.persistence.domain.Email;
-import com.qa.EmailAPI.persistence.domain.MassMail;
-import com.qa.EmailAPI.service.EmailService;
+import com.qa.emailapi.persistence.domain.Email;
+import com.qa.emailapi.persistence.domain.MassMail;
+import com.qa.emailapi.service.EmailService;
 
 @CrossOrigin
 @RestController

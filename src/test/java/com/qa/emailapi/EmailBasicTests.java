@@ -1,4 +1,4 @@
-package com.qa.EmailAPI;
+package com.qa.emailapi;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.qa.EmailAPI.persistence.domain.Email;
+import com.qa.emailapi.persistence.domain.Email;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

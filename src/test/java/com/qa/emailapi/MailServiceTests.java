@@ -1,4 +1,4 @@
-package com.qa.EmailAPI;
+package com.qa.emailapi;
 
 import static org.mockito.Mockito.times;
 
@@ -13,7 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
-import com.qa.EmailAPI.service.EmailServiceImpl;
+import com.qa.emailapi.service.EmailServiceImpl;
 
 
 @RunWith(MockitoJUnitRunner.Silent.class)

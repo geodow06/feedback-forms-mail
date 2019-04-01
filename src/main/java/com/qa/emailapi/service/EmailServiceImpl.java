@@ -1,4 +1,7 @@
-package com.qa.EmailAPI.service;
+package com.qa.emailapi.service;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -11,6 +14,8 @@ public class EmailServiceImpl implements EmailService {
 	
 	@Autowired
     public JavaMailSender emailSender;
+	
+	Logger log = Logger.getAnonymousLogger();
 
     public void sendSingleMessage(String to, String subject, String text) {
         try {
@@ -21,7 +26,7 @@ public class EmailServiceImpl implements EmailService {
 
             emailSender.send(message);
         } catch (MailException exception) {
-            exception.printStackTrace();
+            log.logp(Level.WARNING, "EmailServiceImpl", "sendSingleMessage", "Problem with sending message!", exception);
         }
     }
     
@@ -39,7 +44,7 @@ public class EmailServiceImpl implements EmailService {
     			emailSender.send(message);
     		}
         } catch (MailException exception) {
-            exception.printStackTrace();
+        	log.logp(Level.WARNING, "EmailServiceImpl", "sendMultipleMessages", "Problem with sending messages!", exception);
         }
     }
 
